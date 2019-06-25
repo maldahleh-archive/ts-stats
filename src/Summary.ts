@@ -9,9 +9,10 @@ export interface OutputTarget {
 }
 
 export class Summary {
-    constructor(private readonly analyzer: Analyzer, private readonly outputTarget: OutputTarget) {
+    constructor(private readonly analyzer: Analyzer, private readonly outputTarget: OutputTarget) {}
 
+    buildAndPrintReport(matches: MatchData[]): void {
+        const report = this.analyzer.run(matches);
+        this.outputTarget.print(report);
     }
-
-
 }
